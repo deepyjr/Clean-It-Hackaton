@@ -3,8 +3,16 @@
     <div id="map" class="map"></div>
   </card>
 </template>
-	<script>
+	
+<script>
+import axios from "axios";
+
 export default {
+  data() {
+      return {
+          objData : [],
+      }
+  },
   methods: {
     carteMesCouilles() {
       var map = L.map("map", { doubleClickZoom: false }).setView(
@@ -25,10 +33,18 @@ export default {
   },
   mounted() {
     this.carteMesCouilles();
-  }
+  },
+  created() {
+      axios
+        .get(`http://localhost:3000/interventions/`)
+        .then(response => {
+          this.objData = response.data
+          console.log(this.objData)
+        })
+        .catch(e => {
+          console.log('ca passe pas bill')
+        })
+    },
+
 };
 </script>
-
-
-<style>
-</style>

@@ -145,7 +145,6 @@
     data() {
       return {
         bigLineChart: {
-          objData:[],
           allData: [
             [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100],
             [80, 120, 105, 110, 95, 105, 90, 100, 80, 95, 70, 120],
@@ -275,18 +274,18 @@
         this.$rtl.disableRTL();
       }
     },
-     created() {
-      axios
-        .get(`http://localhost:3000/interventions/`)
-        .then(response => {
-          // JSON responses are automatically parsed.
-          this.objData = response.data
-          console.log(this.objData)
-        })
-        .catch(e => {
-          console.log('ca passe pas bill')
-        })
-    },
+    // DB call
+    //  created() {
+    //   axios
+    //     .get(`http://localhost:3000/interventions/`)
+    //     .then(response => {
+    //       this.objData = response.data
+    //       console.log(this.objData)
+    //     })
+    //     .catch(e => {
+    //       console.log('ca passe pas bill')
+    //     })
+    // },
   };
 </script>
 <style>
